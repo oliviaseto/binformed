@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
+import 'camera.dart'; 
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  //
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final cameras = await availableCameras();
+
+  final camera = cameras.first;
+
+  runApp(MyApp(camera: camera));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  // const MyApp({super.key});
+  final CameraDescription camera;
+
+  const MyApp({required this.camera});
 
   // This widget is the root of your application.
   @override
@@ -31,7 +43,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: TakePictureScreen(camera: camera),
     );
   }
 }
