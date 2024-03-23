@@ -1,5 +1,6 @@
 import 'package:binformed/constants.dart';
 import 'package:binformed/ui/login_page.dart';
+import 'package:binformed/ui/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -20,19 +21,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       appBar: AppBar(
         elevation: 0.0, 
         backgroundColor: Colors.white,
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 20, top: 20),
-            // child: InkWell(
-            //   onTap: () {
-            //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const Login()));
-            //   }, // take to home page
-            //   child: const Text('Skip', style: TextStyle(
-            //     color: Colors.grey,
-            //     fontSize: 16.0,
-            //     fontWeight: FontWeight.w400,
-            //   ),),
-            // ),
+            padding: const EdgeInsets.only(right: 20, top: 20),
+            child: InkWell(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (_)=> const RootPage()));
+              }, // take to home page
+              child: const Text('Skip', style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400,
+              ),),
+            ),
           )
         ],
       ),
