@@ -1,0 +1,7 @@
+0 glass
+1 paper
+2 metal
+3 plastic
+4 trash
+5 cardboard
+6 compost
