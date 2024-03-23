@@ -1,5 +1,4 @@
 import 'package:binformed/constants.dart';
-import 'package:binformed/ui/home_screen.dart';
 import 'package:binformed/ui/login_page.dart';
 import 'package:flutter/material.dart';
 
