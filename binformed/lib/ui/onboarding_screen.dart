@@ -70,7 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               // ),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => const Login()));
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
                 },
 
                 child: const Text("Start"),

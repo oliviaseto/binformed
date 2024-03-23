@@ -1,8 +1,9 @@
-import 'package:binformed/ui/signup_page.dart';
+import 'package:binformed/ui/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class LoginPage extends StatelessWidget {
+
+class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,13 +16,19 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Login title
+            // Sign Up title
             const Text(
-              'Login',
+              'Sign Up',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            // Container for login details
+            // Subtitle
+            const Text(
+              'Just a few quick things to get you started',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            // Container for user details
             Container(
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
@@ -30,6 +37,11 @@ class LoginPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  // Full Name field
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: 'Enter Your Full Name'),
+                  ),
+                  const SizedBox(height: 8),
                   // Email field
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'Enter Your Email'),
@@ -40,16 +52,22 @@ class LoginPage extends StatelessWidget {
                     obscureText: true,
                     decoration: const InputDecoration(labelText: 'Password'),
                   ),
+                  const SizedBox(height: 8),
+                  // Confirm Password field
+                  TextFormField(
+                    obscureText: true,
+                    decoration: const InputDecoration(labelText: 'Confirm Password'),
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 16),
-            // Login button
+            // Sign Up button
             ElevatedButton(
               onPressed: () {
-                // handle login
+                // handle sign up
               },
-              child: const Text('Login'),
+              child: const Text('Sign Up'),
             ),
             const SizedBox(height: 16),
             // Or with text
@@ -58,13 +76,13 @@ class LoginPage extends StatelessWidget {
               style: TextStyle(fontSize: 12),
             ),
             const SizedBox(height: 8),
-            // Facebook and Google sign-in buttons
+            // Facebook and Google sign-up buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
-                    
+                    // Handle Facebook sign-up
                   },
                   icon: const Icon(Icons.facebook),
                   label: const Text('Facebook'),
@@ -74,27 +92,26 @@ class LoginPage extends StatelessWidget {
                   onPressed: () {
                     // Handle Google sign-in
                   },
-                  icon: const FaIcon(FontAwesomeIcons.google, size: 18,),
-                  
+                  icon: const FaIcon(FontAwesomeIcons.google),
                   label: const Text('Google'),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            // Don't have an account text
+            // Already have an account text
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account? "),
+                const Text("Already have an account? "),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                      MaterialPageRoute(builder: (context) => LoginPage()),
                     );
                   },
                   child: const Text(
-                    'Sign Up',
+                    'Sign In',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
