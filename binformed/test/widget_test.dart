@@ -12,6 +12,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:binformed/main.dart';
 
 import 'package:mockito/mockito.dart';
+import 'dart:async';
 
 
 class MockCameraDescription extends Mock implements CameraDescription {}
