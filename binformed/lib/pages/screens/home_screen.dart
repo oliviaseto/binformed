@@ -1,3 +1,4 @@
+import 'package:binformed/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                "$formattedDate", 
+                formattedDate, 
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
@@ -33,16 +33,96 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.only(left: 16, bottom: 20, top: 20),
               child: const Text('Your Stats', style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18.0,
+                fontSize: 20.0,
               ),),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              height: size.height * .5,
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0), 
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: Constants.primaryColor,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                                child: Text(
+                                  "TOTAL\nITEMS",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                                child: Text(
+                                  "251",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 36.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16), // Add space between the containers
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      color: Constants.primaryColor,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          child: CircleAvatar(
+                            radius: 30,
+                            child: Image.asset("assets/images/streak_icon.png"),
+                            backgroundColor: Constants.primaryColor,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                          child: Text(
+                            "18",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 36.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
+            // Padding(
+            //   padding: 
+            // ),
           ],
         ),
-      )
+      ),
     );
   }
 

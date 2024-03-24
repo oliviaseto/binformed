@@ -61,13 +61,13 @@ class _RootPageState extends State<RootPage> {
           Navigator.push(context, PageTransition(child: const ScanPage(), type: PageTransitionType.bottomToTop));
         },
         shape: const CircleBorder(),
-        backgroundColor: Colors.green,
+        backgroundColor: Constants.primaryColor,
         child: Image.asset('assets/images/camera_scan_icon.png', height: 30.0,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        splashColor: Colors.green,
-        activeColor: Colors.green,
+        splashColor: Constants.primaryColor,
+        activeColor: Constants.primaryColor,
         inactiveColor: Colors.black.withOpacity(0.5),
         icons: iconList,
         activeIndex: _bottomNavIndex,
