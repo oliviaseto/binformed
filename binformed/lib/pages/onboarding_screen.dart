@@ -1,6 +1,6 @@
 import 'package:binformed/constants.dart';
-import 'package:binformed/ui/login_page.dart';
-import 'package:binformed/ui/nav_bar.dart';
+import 'package:binformed/pages/login_page.dart';
+import 'package:binformed/pages/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -72,7 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               // ),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => const Login()));
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
                 },
 
                 child: const Text("Start"),
