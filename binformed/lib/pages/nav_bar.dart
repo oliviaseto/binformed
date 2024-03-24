@@ -1,8 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:binformed/constants.dart';
-import 'package:binformed/ui/scan_page.dart';
-import 'package:binformed/ui/screens/home_screen.dart';
-import 'package:binformed/ui/screens/profile_screen.dart';
+import 'package:binformed/pages/scan_page.dart';
+import 'package:binformed/pages/screens/home_screen.dart';
+import 'package:binformed/pages/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
