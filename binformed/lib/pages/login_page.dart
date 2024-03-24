@@ -1,5 +1,5 @@
+import 'package:binformed/pages/nav_bar.dart';
 import 'package:binformed/pages/signup_page.dart';
-import 'package:binformed/pages/screens/home_screen.dart'; // Import your HomeScreen
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -69,7 +69,7 @@ LoginPage({super.key});
                     // Navigate to the home screen after successful login
                     Navigator.pushReplacement(
                       context, 
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(builder: (context) => const RootPage()),
                     );
                   } else {
                     // Handle login failure (optional)

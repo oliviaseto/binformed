@@ -62,7 +62,7 @@ class _RootPageState extends State<RootPage> {
         },
         shape: const CircleBorder(),
         backgroundColor: Colors.green,
-        child: Image.asset('assets/images/scan_icon.png', height: 30.0,),
+        child: Image.asset('assets/images/camera_scan_icon.png', height: 30.0,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
