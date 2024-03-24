@@ -1,5 +1,5 @@
 import 'package:binformed/constants.dart';
-import 'package:binformed/ui/login_page.dart';
+import 'package:binformed/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {

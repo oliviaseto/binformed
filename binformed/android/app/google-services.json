@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "517367558487",
+    "project_id": "binformed-24",
+    "storage_bucket": "binformed-24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517367558487:android:3c90ba727dabb725190e12",
+        "android_client_info": {
+          "package_name": "com.example.binformed"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmzTYp1XzqD8BHjh_0QvBosf0EMbPKmag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

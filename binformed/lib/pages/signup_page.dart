@@ -1,4 +1,4 @@
-import 'package:binformed/ui/login_page.dart';
+import 'package:binformed/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

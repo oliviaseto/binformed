@@ -1,8 +1,15 @@
-import 'package:binformed/ui/signup_page.dart';
+import 'package:binformed/pages/signup_page.dart';
+import 'package:binformed/pages/home_screen.dart'; // Import your HomeScreen
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatelessWidget {
+LoginPage({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +39,14 @@ class LoginPage extends StatelessWidget {
                 children: [
                   // Email field
                   TextFormField(
+                    controller: emailController,
                     decoration: const InputDecoration(labelText: 'Enter Your Email'),
+                    obscureText: false,
                   ),
                   const SizedBox(height: 8),
                   // Password field
                   TextFormField(
+                    controller: passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(labelText: 'Password'),
                   ),
@@ -46,40 +56,42 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 16),
             // Login button
             ElevatedButton(
-              onPressed: () {
-                // handle login
+              onPressed: () async {
+                try {
+                  // Perform login with Firebase Authentication
+                  UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+
+                  // Check if login was successful
+                  if (userCredential.user != null) {
+                    // Navigate to the home screen after successful login
+                    Navigator.pushReplacement(
+                      context, 
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  } else {
+                    // Handle login failure (optional)
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Login failed. Please check your email and password.'),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  // Handle login errors
+                  print('Login error: $e');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('An error occurred. Please try again later.'),
+                    ),
+                  );
+                }
               },
               child: const Text('Login'),
             ),
-            const SizedBox(height: 16),
-            // Or with text
-            const Text(
-              'or with',
-              style: TextStyle(fontSize: 12),
-            ),
-            const SizedBox(height: 8),
-            // Facebook and Google sign-in buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    
-                  },
-                  icon: const Icon(Icons.facebook),
-                  label: const Text('Facebook'),
-                ),
-                const SizedBox(width: 8),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    // Handle Google sign-in
-                  },
-                  icon: const FaIcon(FontAwesomeIcons.google, size: 18,),
-                  
-                  label: const Text('Google'),
-                ),
-              ],
-            ),
+
             const SizedBox(height: 16),
             // Don't have an account text
             Row(
