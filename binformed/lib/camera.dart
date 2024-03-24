@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'dart:io';
 
 class TakePictureScreen extends StatefulWidget {
@@ -91,7 +92,17 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.file(File(imagePath)),
+      body: _buildImageWidget(),
     );
+  }
+
+  Widget _buildImageWidget() {
+    if (kIsWeb) {
+      // For web, use Image.network
+      return Image.network(imagePath);
+    } else {
+      // For other platforms, use Image.file
+      return Image.file(File(imagePath));
+    }
   }
 }
