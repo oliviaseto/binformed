@@ -4,7 +4,7 @@ import 'package:binformed/pages/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+  const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -19,7 +19,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0.0, 
+        elevation: 0.0,
         backgroundColor: Colors.white,
         actions: [
           Padding(
@@ -27,13 +27,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: InkWell(
               onTap: () {
                 Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (_)=> const RootPage()));
+                  context,
+                  MaterialPageRoute(builder: (_) => const RootPage()),
+                );
               }, // take to home page
-              child: const Text('Skip', style: TextStyle(
-                color: Colors.grey,
-                fontSize: 16.0,
-                fontWeight: FontWeight.w400,
-              ),),
+              child: const Text(
+                'Skip',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
             ),
           )
         ],
@@ -48,124 +53,74 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               });
             },
             controller: _pageController,
-            children: [
-              createPage(image: 'assets/images/recycle_can.png',
-                title: Constants.titleOne,
-                description: Constants.descriptionOne,
-              )
+            children: const [
+              createPage(
+                image1: 'assets/images/binformed.png',
+                image2: 'assets/images/welcome.png',
+              ),
             ],
           ),
-          // Positioned(
-          //   bottom: 80,
-          //   left: 30, 
-          //   child: Row(
-          //     children: _buildIndicator(),
-          //   ),),
           Positioned(
-            bottom: 60,
-            // right: 0, 
-            child: Container(
-              // padding: const EdgeInsets.all(4),
-              // decoration: const BoxDecoration(
-              //   shape: BoxShape.circle,
-              //   color: Colors.green,
-              // ),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
-                },
-
-                child: const Text("Start"),
+            bottom: 110,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => LoginPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(130, 182, 219, 1), // Set the button color
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20), // Set the border radius for a rounded rectangle
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 90, vertical: 16), // Set the button padding
               ),
-              
-              // child: IconButton(
-              //   onPressed: (){
-              //     setState(() {
-              //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const Login()));
-              //     });
-              //   }, 
-              //   icon: const Icon(Icons.arrow_forward_ios, size: 24, color: Colors.white,)),
+              child: const Text(
+                "Start",
+                style: TextStyle(
+                  fontSize: 18, 
+                  color:Colors.white,
+                ),
+              ),
             ),
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+class createPage extends StatelessWidget {
+  final String image1;
+  final String image2;
+
+  const createPage({
+    Key? key,
+    required this.image1,
+    required this.image2,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 0, right: 0, bottom: 70),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Image.asset(
+            image1,
+            height: 400,
+            width: 400,
+          ),
+          Image.asset(
+            image2,
+            height: 150,
+            width: 340,
           ),
         ],
       ),
     );
   }
-
-
-  // Extra widgets to create the indicator decorations widget
-  // Widget _indicator(bool isActive) {
-  //   return AnimatedContainer(
-  //     duration: const Duration(milliseconds: 300),
-  //     height: 10.0,
-  //     width: isActive ? 20 : 8,
-  //     margin: const EdgeInsets.only(right: 5.0),
-  //     decoration: BoxDecoration(
-  //       color: Colors.green,
-  //       borderRadius: BorderRadius.circular(5),
-  //     ),
-  //   );
-  // }
-
-  // // Create the indicator list
-  // List<Widget> _buildIndicator() {
-  //   List<Widget> indicators = [];
-
-  //   for (int i = 0; i < 3; i++) {
-  //     if (currentIndex == i) {
-  //       indicators.add(_indicator(true));
-  //     } else {
-  //       indicators.add(_indicator(false));
-  //     }
-  //   }
-
-  //   return indicators;
-  // }
-
 }
-
-class createPage extends StatelessWidget {
-  final String image;
-  final String title;
-  final String description;
-
-  const createPage({
-    super.key, required this.image, required this.title, required this.description,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 50, right: 50, bottom: 80),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(height: 350, child: Image.asset(image),),
-          const SizedBox(height: 20,),
-          Text(title,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.green,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-          ),
-          const SizedBox(height: 20,),
-          Text(description, 
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-              color: Colors.grey,
-            ),
-          ),
-          const SizedBox(height: 20,),
-        ],
-      )
-    );
-  }
-}
-
-
-
-
