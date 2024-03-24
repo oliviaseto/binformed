@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
@@ -21,8 +22,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   void initState() {
     super.initState();
     try {
-      cameraController = CameraController(widget.camera, ResolutionPreset.high,
-          enableAudio: false,);
+      cameraController = CameraController(
+        widget.camera,
+        ResolutionPreset.high,
+        enableAudio: false,
+      );
       ControllerFuture = cameraController.initialize();
     } catch (e) {
       print('Failed to initialize camera: $e');
@@ -37,9 +41,23 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
   void capturePhoto() async {
     if (cameraController != null && cameraController.value.isInitialized) {
-      final image = await cameraController.takePicture();
-      final imagePath = image.path;
-      // implement scaning the photo here
+      try {
+        final image = await cameraController.takePicture();
+        final imagePath = image.path;
+
+        // If the picture was taken, display it on a new screen.
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => DisplayPictureScreen(
+              // Pass the automatically generated path to
+              // the DisplayPictureScreen widget.
+              imagePath: imagePath,
+            ),
+          ),
+        );
+      } catch (e) {
+        print(e);
+      }
     }
   }
 
@@ -57,9 +75,23 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-      child: Icon(Icons.camera),
-      onPressed: capturePhoto,
+        child: Icon(Icons.camera),
+        onPressed: capturePhoto,
       ),
+    );
+  }
+}
+
+class DisplayPictureScreen extends StatelessWidget {
+  final String imagePath;
+
+  const DisplayPictureScreen({Key? key, required this.imagePath})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Image.file(File(imagePath)),
     );
   }
 }

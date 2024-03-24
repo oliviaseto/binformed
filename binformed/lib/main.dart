@@ -3,7 +3,6 @@ import 'package:camera/camera.dart';
 import 'camera.dart'; 
 
 void main() async {
-  //
   WidgetsFlutterBinding.ensureInitialized();
 
   final cameras = await availableCameras();
